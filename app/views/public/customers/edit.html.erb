@@ -1,0 +1,15 @@
+<h1>カスタマー編集画面</h1>
+
+<%= form_with model: @customer, url: update_information_path do |f| %>
+<%= f.text_field :first_name %></br>
+<%= f.text_field :last_name %></br>
+<%= f.text_field :first_name_kana %></br>
+<%= f.text_field :last_name_kana %></br>
+<%= f.text_field :postal_code %></br>
+<%= f.text_field :address %></br>
+<%= f.text_field :telephone_number %></br>
+
+<%= f.submit '保存' %>
+
+
+<% end %>
