@@ -10,6 +10,12 @@ class Public::CustomersController < ApplicationController
   def index
   end
 
+  def withdrawal
+    @customer = current_customer
+    @customer.update(is_deleted: "TRUE")
+    redirect_to root_path
+  end
+
   def update
 
   end
