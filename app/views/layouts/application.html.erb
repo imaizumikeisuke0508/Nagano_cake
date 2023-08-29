@@ -13,16 +13,19 @@
   <body>
      <header>
     <% if admin_signed_in? %>
+     <% if request.fullpath.include? "/admin" %>
       <li>
         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+      </li>
+      <li>
+        <%= link_to "商品一覧", admin_items_path %>
       </li>
     <% else %>
       <li>
         <%= link_to "ログイン", new_admin_session_path %>
       </li>
     <% end %>
-
-    <% if customer_signed_in? %>
+    <% elsif customer_signed_in? %>
       <li>
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
@@ -30,6 +33,12 @@
       <%= link_to 'マイページ', mypage_path %>
       </li>
     <% else %>
+      <li>
+        <%= link_to "About", homes_about_path %>
+      </li>
+      <li>
+        <%= link_to "商品一覧" %>
+      </li>
       <li>
         <%= link_to "新規登録", new_customer_registration_path %>
       </li>

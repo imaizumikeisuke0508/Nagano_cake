@@ -1,0 +1,13 @@
+<h1>Item/Index</h1>
+
+<% @items.each do |item| %>
+<div>
+<p>商品ID : <%= item.id %></p>
+<p>商品名 : <%= item.name %></p>
+<p>税込み価格 : <%= item.price %></p>
+</div>
+<% end %>
+
+<li>
+<%= link_to "新規作成", new_admin_item_path %>
+</li>
