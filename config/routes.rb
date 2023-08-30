@@ -7,6 +7,9 @@ devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+  namespace :public do
+  resources :items, only: [:show, :index]
+  end
 
 scope module: :public do
   get 'customers/mypage' => 'customers#show', as: 'mypage'

@@ -29,6 +29,9 @@
       <li>
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
+       <li>
+        <%= link_to "商品一覧", public_items_path %>
+      </li>
       <li>
       <%= link_to 'マイページ', mypage_path %>
       </li>
@@ -37,7 +40,7 @@
         <%= link_to "About", homes_about_path %>
       </li>
       <li>
-        <%= link_to "商品一覧" %>
+        <%= link_to "商品一覧", public_items_path %>
       </li>
       <li>
         <%= link_to "新規登録", new_customer_registration_path %>
