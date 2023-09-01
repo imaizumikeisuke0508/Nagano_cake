@@ -1,0 +1,13 @@
+<h1>管理者　会員一覧</h1>
+<% @customers.each do |customer| %>
+id
+<p><%= customer.id %></p>
+氏名
+<p><li>
+<%= link_to customer.first_name, admin_customer_path(customer.id) %>
+</li>
+</p>
+メルアド
+<p><%= customer.email %></p>
+
+<% end %>

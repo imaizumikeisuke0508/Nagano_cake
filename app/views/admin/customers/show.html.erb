@@ -1,0 +1,24 @@
+<h1>管理者　会員詳細</h1>
+会員ID
+<p><%= @customer.id %></p>
+氏名
+<p><%= @customer.last_name %> <%= @customer.first_name %> </p>
+ふりがな
+<p><%= @customer.last_name_kana %> <%= @customer.first_name_kana %> </p>
+郵便番号
+<p><%= @customer.postal_code %></p>
+住所
+<p><%= @customer.address %></p>
+電話番号
+<p><%= @customer.telephone_number %></p>
+メルアド
+<p><%= @customer.email %></p>
+会員ステータス
+<% if @customer.is_deleted == false %>
+ <p>有効</p>
+ <% else %>
+ <p>退会済</p>
+<% end %>
+編集ボタン
+<li><%= link_to "編集する", edit_admin_customer_path(@customer.id) %></li>
+注文履歴
