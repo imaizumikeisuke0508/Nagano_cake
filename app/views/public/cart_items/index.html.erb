@@ -1,0 +1,14 @@
+<h1>顧客　ショッピングカート</h1>
+<% @cart_items.each do |cart_item| %>
+商品名</br>
+<%= cart_item.item.name %></br>
+税込み価格</br>
+<%= cart_item.add_tax_price %></br>
+数量</br>
+<%= cart_item.amount %></br>
+小計</br>
+<%= cart_item.subtotal %></br>
+合計
+<%= @total += cart_item.subtotal %>
+<%= link_to "削除", public_cart_item_path(cart_item.id), method: :delete %>
+<% end %>
