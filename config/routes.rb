@@ -9,7 +9,8 @@ devise_for :customers,skip: [:passwords], controllers: {
 }
   namespace :public do
   resources :items, only: [:show, :index]
-  resources :cart_items, only: [:index, :update, :create, :destroy, :destroy_all]
+  delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
+  resources :cart_items, only: [:index, :update, :create, :destroy]
   end
 
 scope module: :public do
