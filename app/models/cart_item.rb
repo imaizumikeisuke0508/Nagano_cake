@@ -6,5 +6,4 @@ end
 def subtotal
   (item.price * 1.10).round * (amount)
 end
-
 end

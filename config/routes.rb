@@ -11,6 +11,9 @@ devise_for :customers,skip: [:passwords], controllers: {
   resources :items, only: [:show, :index]
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all'
   resources :cart_items, only: [:index, :update, :create, :destroy]
+  post 'orders/confirm' => 'orders#confirm'
+  get 'orders/complete' => 'orders#complete'
+  resources :orders, only: [:new, :create, :index, :show]
   end
 
 scope module: :public do

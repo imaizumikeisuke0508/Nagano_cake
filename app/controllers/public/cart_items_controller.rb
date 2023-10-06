@@ -7,9 +7,7 @@ class Public::CartItemsController < ApplicationController
   def create
     item_id = cart_items_params[:item_id]
     if CartItem.find_by(item_id: item_id)
-      #カートを見つける
       @cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
-      #amountを合算し更新
       @cart_item.amount += params[:cart_item][:amount].to_i
       @cart_item.update(amount: @cart_item.amount)
     else

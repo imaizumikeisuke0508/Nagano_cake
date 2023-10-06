@@ -43,6 +43,12 @@
         <button type="button" class="btn btn-link border">
        <%= link_to 'カート', public_cart_items_path %>
        </button>
+       <button type="button" class="btn btn-link border">
+       <%= link_to '注文', new_public_order_path %>
+       </button>
+        <button type="button" class="btn btn-link border">
+       <%= link_to '注文情報確認', public_orders_confirm_path %>
+       </button>
       <% else %>
     　 <button type="button" class="btn btn-link border">
        <%= link_to 'About', homes_about_path %>

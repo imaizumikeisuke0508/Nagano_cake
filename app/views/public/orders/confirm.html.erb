@@ -1,0 +1,32 @@
+<h1>注文情報確認</h1>
+<%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
+<% @cart_items.each do |cart_item| %>
+商品名</br>
+<%= cart_item.item.name %></br>
+税込み価格</br>
+<%= cart_item.add_tax_price %></br>
+数量</br>
+<%= cart_item.amount %></br>
+小計</br>
+<%= cart_item.subtotal %></br>
+送料</br>
+<%= @order.postage %></br>
+商品合計</br>
+<%= @total += cart_item.subtotal %></br>
+請求金額</br>
+<%= @total + @order.postage %></br>
+<%= f.hidden_field :amount_billed, :value => @total + @order.postage %>
+<% end %>
+
+<%= @order.address %></br>
+<%= f.hidden_field :address, :value => @order.address %>
+<%= @order.post_number %></br>
+<%= f.hidden_field :post_number, :value => @order.post_number %>
+<%= @order.name %></br>
+<%= f.hidden_field :name, :value => @order.name %>
+<%= @order.payment_method %></br>
+<%= f.hidden_field :payment_method, :value => @order.payment_method %>
+<%= f.hidden_field :customer_id, :value => current_customer.id %></br>
+
+<%= f.submit %>
+<% end %>
