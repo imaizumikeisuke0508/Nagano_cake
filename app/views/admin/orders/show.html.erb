@@ -1,2 +1,25 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h1>管理者注文履歴詳細</h1>
+購入者</br>
+<%= @order.name %></br>
+注文日</br>
+<%= @order.created_at.strftime("%Y-%m-%d") %></br>
+配送先</br>
+<%= @order.address %></br>
+支払い方法
+<%= @order.payment_method_i18n %></br>
+<% @order_detail.each do |order_detail| %>
+商品名</br>
+<%= order_detail.item.name %></br>
+税込み単価</br>
+<%= order_detail.add_tax_price %></br>
+数量</br>
+<%= order_detail.quantity %></br>
+小計</br>
+<%= order_detail.subtotal %></br>
+<% end %>
+送料
+<%= @order.postage %></br>
+商品合計</br>
+<%= @total %></br>
+請求金額合計</br>
+<%= @order.amount_billed %></br>

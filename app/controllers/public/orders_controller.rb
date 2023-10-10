@@ -33,10 +33,19 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.all
+    @order_details = OrderDetail.all
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_detail = OrderDetail.all
+    @total = 0
+    @order_detail.each do |order_detail|
+     @total += order_detail.subtotal
+    end
   end
+
 private
  def order_params
    params.require(:order).permit(:post_number, :address, :payment_method, :name, :amount_billed, :customer_id, )
@@ -45,4 +54,3 @@ private
    params.require(:order).permit(:price, :item_id, :order_id, :quantity)
  end
 end
-

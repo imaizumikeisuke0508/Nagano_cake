@@ -1,2 +1,28 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<h1>顧客注文詳細</h1>
+注文情報</br>
+注文日</br>
+<%= @order.created_at.strftime("%Y-%m-%d") %></br>
+配送先</br>
+<%= @order.post_number %></br>
+<%= @order.address %></br>
+支払い方法</br>
+<%= @order.payment_method_i18n %></br>
+配送料</br>
+<%= @order.postage %></br>
+ご請求額</br>
+<%= @order.amount_billed %></br>
+
+<% @order_detail.each do |order_detail| %>
+請求情報</br>
+注文内容</br>
+商品</br>
+<%= order_detail.item.name %></br>
+単価（税込み）</br>
+<%= order_detail.add_tax_price %></br>
+個数</br>
+<%= order_detail.quantity %></br>
+小計</br>
+<%= (order_detail.add_tax_price.to_i) * (order_detail.quantity.to_i) %></br>
+<% end %>
+商品合計</br>
+<%= @total %></br>
