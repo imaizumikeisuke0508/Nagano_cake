@@ -14,7 +14,7 @@ class Public::CartItemsController < ApplicationController
       @cart_item = CartItem.new(cart_items_params)
       @cart_item.save
     end
-    redirect_to public_cart_items_path
+    redirect_to public_items_path
   end
 
   def destroy

@@ -13,3 +13,6 @@
 <%= @total += cart_item.subtotal %>
 <%= link_to "削除", public_cart_item_path(cart_item.id), method: :delete %>
 <% end %>
+<button type="button" class="btn btn-link border">
+ <%= link_to '注文', new_public_order_path %>
+</button>

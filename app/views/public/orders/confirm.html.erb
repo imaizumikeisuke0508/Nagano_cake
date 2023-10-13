@@ -13,10 +13,10 @@
 <%= @order.postage %></br>
 商品合計</br>
 <%= @total += cart_item.subtotal %></br>
+<% end %>
 請求金額</br>
 <%= @total + @order.postage %></br>
 <%= f.hidden_field :amount_billed, :value => @total + @order.postage %>
-<% end %>
 
 <%= @order.address %></br>
 <%= f.hidden_field :address, :value => @order.address %>

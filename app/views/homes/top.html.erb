@@ -1,4 +1,7 @@
-<h1>Homes#top</h1>
+<div class="container">
+<div class="row">
+<div class = "col">
+
 <p>
   ようこそ、ながのCAKEへ！</br>
 このサイトは、ケーキ販売のECサイトになります。</br>
@@ -6,6 +9,14 @@
 購入には会員登録が必要になります。
 </p>
 <h1>新着商品</h1>
+<% @items.each do |item| %>
+<%= item.name %><br>
+<%= item.price %><br>
+<% end %>
+
 <li>
-<%= link_to "全ての商品を見る" %>
+<%= link_to "全ての商品を見る", public_items_path %>
 </li>
+</div>
+</div>
+</div>

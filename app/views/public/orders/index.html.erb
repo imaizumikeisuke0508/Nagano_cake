@@ -5,14 +5,13 @@
 配送先</br>
 <%= order.address %></br>
 注文商品</br>
-<% @order_details.each do |order_detail| %>
+<% order.order_detail.each do |order_detail| %>
 <%= order_detail.item.name %></br>
 <% end %>
-
 支払金額</br>
 <%= order.amount_billed %></br>
 注文詳細</br>
 <button type="button" class="btn btn-link border">
 　<%= link_to '表示する', public_order_path(order.id) %>
-</button>
+</button></br>
 <% end %>

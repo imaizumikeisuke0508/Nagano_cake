@@ -7,10 +7,6 @@
 <%= @order.address %></br>
 支払い方法</br>
 <%= @order.payment_method_i18n %></br>
-配送料</br>
-<%= @order.postage %></br>
-ご請求額</br>
-<%= @order.amount_billed %></br>
 
 <% @order_detail.each do |order_detail| %>
 請求情報</br>
@@ -24,5 +20,10 @@
 小計</br>
 <%= (order_detail.add_tax_price.to_i) * (order_detail.quantity.to_i) %></br>
 <% end %>
+
 商品合計</br>
 <%= @total %></br>
+配送料</br>
+<%= @order.postage %></br>
+ご請求額</br>
+<%= @order.amount_billed %></br>
