@@ -1,17 +1,72 @@
-<h1>カスタマー編集画面</h1>
+<div class="container">
+ <div class="row m-2">
+  <div class="col w-auto">
+   <mark class="h5 bg-light">会員情報編集</mark>
+  </div>
+ </div>
 
 <%= form_with model: @customer, url: update_information_path do |f| %>
-<%= f.text_field :first_name %></br>
-<%= f.text_field :last_name %></br>
-<%= f.text_field :first_name_kana %></br>
-<%= f.text_field :last_name_kana %></br>
-<%= f.text_field :postal_code %></br>
-<%= f.text_field :address %></br>
-<%= f.text_field :telephone_number %></br>
-
-<%= f.submit '保存' %>
-<li>
-<%= link_to '退会', unsubscribe_path %>
-</li>
-
+<div class="row m-1">
+<div class="col-3">
+氏名
+</div>
+<div class="col-4">
+<%= f.text_field :first_name %>
+</div>
+<div class="col-3">
+<%= f.text_field :last_name %>
+</div>
+</div>
+<div class="row m-1">
+<div class="col-3">
+フリガナ
+</div>
+<div class="col-4">
+<%= f.text_field :first_name_kana %>
+</div>
+<div class="col-3">
+<%= f.text_field :last_name_kana %>
+</div>
+</div>
+<div class="row m-1">
+<div class="col-3">
+郵便番号
+</div>
+<div class="col-3">
+<%= f.text_field :postal_code %>
+</div>
+</div>
+<div class="row m-1">
+<div class="col-3">
+住所
+</div>
+<div class="col-6">
+<%= f.text_field :address, class: "form-control border-dark" %>
+</div>
+</div>
+<div class="row m-1">
+<div class="col-3">
+電話番号
+</div>
+<div class="col-3">
+<%= f.text_field :telephone_number %>
+</div>
+</div>
+<div class="row m-1">
+<div class="col-3">
+メールアドレス
+</div>
+<div class="col-3">
+<%= f.text_field :email %>
+</div>
+</div>
+<div class="row m-3 justify-content-between">
+<div class="col-4">
+<%= f.submit '保存',class: "btn btn-success" %>
+</div>
+<div class="col-4">
+<%= link_to '退会', unsubscribe_path,class: "btn btn-danger" %>
+</div>
+</div>
 <% end %>
+</div>

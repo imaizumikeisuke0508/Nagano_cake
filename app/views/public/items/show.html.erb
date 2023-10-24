@@ -1,13 +1,20 @@
-<p>顧客　商品詳細</p>
-画像
-<p>商品名 : <%= @item.name %> </p>
-<p>商品説明 : <%= @item.introduction %> </p>
-<p>税込み価格 : <%= @item.price %> </p>
-<div>
+<div class="container">
+<div class="row m-4 justify-content-center">
+<div class="col-3">
+<%= image_tag @item.image, size: "150x100" %>
+</div>
+<div class="col-3">
+<p class="h4"><%= @item.name %></p></br>
+<p class="h5"><%= @item.introduction %></p></br>
+<p class="h4 text-nowrap">¥<%= @item.price %>（税込）</p></br>
+</div>
+</div>
+<div class="row justify-content-end">
   <%= form_with model: @cart_item , url: public_cart_items_path , method: :post do |f| %>
 　<%= f.hidden_field :item_id, :value => @item.id %>
 　<%=  f.hidden_field :customer_id, :value => current_customer.id %>
-　<%= f.select :amount, *[1..10], prompt:'個数選択' %>
-  <%= f.submit 'カートに入れる' %>
+　<%= f.select :amount, *[1..10], prompt:'個数選択'%>
+  <%= f.submit 'カートに入れる', class: "btn btn-success" %>
 <% end %>
+</div>
 </div>

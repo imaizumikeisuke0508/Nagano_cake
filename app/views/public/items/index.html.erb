@@ -1,14 +1,18 @@
-<h1>顧客商品一覧</h1>
+<div class="container">
+<div class="row m-3">
+  <div class="col h4">商品一覧</div>
+  </div>
+
+<div class ="row justify-content-between">
 <% @items.each do |item| %>
-<div>
-<p>商品ID : <%= item.id %></p>
-
-<p>商品名 :
-<li>
+<div class="card card-lg border-0 m-2">
+<a href="<%= public_item_path(item.id) %>">
+<%= image_tag item.image, size: "150x100" %></br>
+</a>
 <%= link_to item.name, public_item_path(item.id) %>
-</li>
-</p>
-
-<p>税込み価格 : <%= item.price %></p>
+<div>¥<%= item.price %></div>
 </div>
 <% end %>
+</div>
+
+</div>

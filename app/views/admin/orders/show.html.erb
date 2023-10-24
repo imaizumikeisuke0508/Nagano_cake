@@ -1,25 +1,68 @@
-<h1>管理者注文履歴詳細</h1>
-購入者</br>
-<%= @order.name %></br>
-注文日</br>
-<%= @order.created_at.strftime("%Y-%m-%d") %></br>
-配送先</br>
-<%= @order.address %></br>
-支払い方法
-<%= @order.payment_method_i18n %></br>
-<% @order_detail.each do |order_detail| %>
-商品名</br>
-<%= order_detail.item.name %></br>
-税込み単価</br>
-<%= order_detail.add_tax_price %></br>
-数量</br>
-<%= order_detail.quantity %></br>
-小計</br>
-<%= order_detail.subtotal %></br>
-<% end %>
-送料
-<%= @order.postage %></br>
-商品合計</br>
-<%= @total %></br>
-請求金額合計</br>
-<%= @order.amount_billed %></br>
+<div class="container">
+
+<div class="row m-4">
+<div class="col w-auto">
+<mark class="h5 bg-light">注文履歴詳細</mark>
+</div>
+</div>
+
+<div class="row">
+<div class="col-3">購入者</div><div class="col"><%= @order.name %></div>
+</div>
+<div class="row">
+<div class="col-3">注文日</div><div class="col"><%= @order.created_at.strftime("%Y-%m-%d") %></div>
+</div>
+<div class="row">
+<div class="col-3">配送先</div>
+<div class="col">
+<div class="row">
+<div class="col">
+〒<%= @order.post_number %>
+</div>
+</div>
+<div class="row">
+<div class="col">
+<%= @order.address %>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-3">支払い方法</div><div class="col"><%= @order.payment_method_i18n %></div>
+</div>
+
+<div class="row m-4">
+<div class="col-8">
+<table class="table table-bordered">
+<thead class="table-active">
+<th class="col-3">商品名</th>
+<th class="col-3">単価（税込）</th>
+<th class="col-1">個数</th>
+<th class="col-3">小計</th>
+</thead>
+<tbody>
+  <% @order_detail.each do |order_detail| %>
+  <td><%= order_detail.item.name %></td>
+  <td><%= order_detail.add_tax_price %></td>
+  <td><%= order_detail.quantity %></td>
+  <td><%= order_detail.subtotal %></td>
+  <% end %>
+</tbody>
+</table>
+</div>
+
+<div class="col-4">
+<div class="row">
+<div class="col">送料</div><div class="col"><%= @order.postage %>円</div>
+</div>
+<div class="row">
+<div class="col">商品合計</div><div class="col"><%= @total %>円</div>
+</div>
+<div class="row">
+<div class="col">請求額合計</div><div class="col"><%= @order.amount_billed %>円</div>
+</div>
+</div>
+
+</div>
+
+</div>

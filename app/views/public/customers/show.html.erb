@@ -1,21 +1,44 @@
-<h1>Mypage</h1>
+<div class="container">
+ <div class="row m-2">
+  <div class="col w-auto">
+   <mark class="h5 bg-light">マイページ</mark>
+  </div>
+ </div>
+ <div class="row m-2">
+  <div class="col h5 w-auto">登録情報</div>
+   <div class="col">
+   <%= link_to '編集する', edit_information_path, class: "btn btn-success" %>
+   </div>
+</div>
+<table class="table">
+  <tbody>
+    <tr>
+      <td class="table-active">氏名</td>
+      <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
+    </tr>
+    <tr>
+      <td class="table-active">カナ</td>
+      <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+    </tr><tr>
+      <td class="table-active">郵便番号</td>
+      <td><%= @customer.postal_code %></td>
+    </tr><tr>
+      <td class="table-active">住所</td>
+      <td><%= @customer.address %></td>
+    </tr><tr>
+      <td class="table-active">電話番号</td>
+      <td><%= @customer.telephone_number %></td>
+    </tr><tr>
+      <td class="table-active">メールアドレス</td>
+      <td><%= @customer.email %></td>
+    </tr>
+  </tbody>
+</table>
 
-<%= form_with model: @customer, url: update_information_path do |f| %>
-<%= f.text_field :first_name %></br>
-<%= f.text_field :last_name %></br>
-<%= f.text_field :first_name_kana %></br>
-<%= f.text_field :last_name_kana %></br>
-<%= f.text_field :postal_code %></br>
-<%= f.text_field :address %></br>
-<%= f.text_field :telephone_number %></br>
-
-<%= f.submit '保存' %>
-
-
-<% end %>
-<li>
-<%= link_to '編集画面', edit_information_path %>
-</li>
-<button type="button" class="btn btn-link border">
- <%= link_to '注文履歴', public_orders_path %>
-</button>
+<div class="row m-2">
+  <div class="col h5 w-auto">注文履歴</div>
+   <div class="col">
+ <%= link_to '一覧を見る', public_orders_path, class:"btn btn-primary" %>
+</div>
+</div>
+</div>

@@ -1,13 +1,33 @@
-<h1>管理者　会員一覧</h1>
+<div class="container">
+
+<div class="row m-4">
+  <div class="col w-auto">
+   <mark class="h5 bg-light">会員一覧</mark>
+  </div>
+</div>
+
+
+<div class="row">
+
+<div class="col-12">
+<table class="table table-bordered">
+<thead class="table-active">
+<th>会員ID</th>
+<th>氏名</th>
+<th>メールアドレス</th>
+<th>ステータス</th>
+</thead>
+<tbody>
 <% @customers.each do |customer| %>
-id
-<p><%= customer.id %></p>
-氏名
-<p><li>
-<%= link_to customer.first_name, admin_customer_path(customer.id) %>
-</li>
-</p>
-メルアド
-<p><%= customer.email %></p>
+<td><%= customer.id %></td>
+<td><%= link_to (customer.last_name + customer.first_name), admin_customer_path(customer.id) %></td>
+<td><%= customer.email %></td>
+<td><%= @status %></td>
+</tbody>
+</table>
+</div>
+
+</div>
 
 <% end %>
+</div>

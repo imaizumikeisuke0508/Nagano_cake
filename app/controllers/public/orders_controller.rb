@@ -10,6 +10,9 @@ class Public::OrdersController < ApplicationController
     @order.post_number = current_customer.postal_code
     @cart_items = CartItem.all
     @total = 0
+    @cart_items.each do |cart_item|
+     @total += cart_item.subtotal
+    end
   end
 
   def complete

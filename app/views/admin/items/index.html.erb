@@ -1,19 +1,29 @@
-<h1>Item/Index</h1>
+<div class="container">
 
-<% @items.each do |item| %>
-<div>
-<p>商品ID : <%= item.id %></p>
-
-<p>商品名 :
-<li>
-<%= link_to item.name, admin_item_path(item.id) %>
-</li>
-</p>
-
-<p>税込み価格 : <%= item.price %></p>
+<div class="row m-4">
+  <div class="col w-auto">
+   <mark class="h5 bg-light">商品一覧</mark>
+  </div>
+  <%= link_to '新規作成', new_admin_item_path, class: "btn btn-primary" %>
 </div>
-<% end %>
 
-<li>
-<%= link_to "新規作成", new_admin_item_path %>
-</li>
+<div class="row">
+
+<div class="col-12">
+<table class="table table-bordered">
+<thead class="table-active">
+<th>商品ID</th>
+<th>商品名</th>
+<th>税込み価格</th>
+</thead>
+<% @items.each do |item| %>
+<tbody>
+<td><%= item.id %></td>
+<td><%= link_to item.name, admin_item_path(item.id) %></td>
+<td><%= item.price %></td>
+</tbody>
+<% end %>
+</table>
+</div>
+
+<div>
