@@ -1,10 +1,6 @@
 class Admin::OrdersController < ApplicationController
   def index
-    @orders = Order.page(params[:page])
-    @orders.each do |order|
-    @total = 0
-    @order_detail = OrderDetail.where(order_id: order.id)
-    end
+   @orders = Order.page(params[:page])
   end
 
   def show

@@ -19,10 +19,10 @@
 <tbody>
 <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
 <td><%= order.name %></td>
-<td>注文個数</td>
+<td><%= order.order_detail.sum(:quantity) %></td>
 </tbody>
 <% end %>
 </table>
 </div>
-
+<%= paginate @orders %>
 </div>

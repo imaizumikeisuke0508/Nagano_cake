@@ -1,13 +1,6 @@
 class Admin::CustomersController < ApplicationController
   def index
     @customers = Customer.page(params[:page])
-    @customers.each do |customer|
-    if customer.is_deleted == false
-      @status = "有効"
-    else
-      @status = "退会"
-    end
-   end
   end
 
 

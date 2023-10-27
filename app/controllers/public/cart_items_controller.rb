@@ -7,6 +7,13 @@ class Public::CartItemsController < ApplicationController
     end
   end
 
+  def update
+   @cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
+   @cart_item.amount = params[:cart_item][:amount]
+   @cart_item.update(amount: @cart_item.amount)
+   redirect_to public_cart_items_path
+  end
+
   def create
     item_id = cart_items_params[:item_id]
     if CartItem.find_by(item_id: item_id)
@@ -18,6 +25,7 @@ class Public::CartItemsController < ApplicationController
       @cart_item.save
     end
     redirect_to public_items_path
+    #render?
   end
 
   def destroy
