@@ -9,13 +9,15 @@
 <p class="h4 text-nowrap">¥<%= @item.price %>（税込）</p></br>
 </div>
 </div>
+<% if customer_signed_in? %>
 <div class="row justify-content-end">
   <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
 　<%= f.hidden_field :item_id, :value => @item.id %>
-　<%= @item.id %>
 　<%=  f.hidden_field :customer_id, :value => current_customer.id %>
 　<%= f.select :amount, *[1..10], prompt:'個数選択'%>
   <%= f.submit 'カートに入れる', class: "btn btn-success" %>
 <% end %>
 </div>
+<% else %>
+<% end %>
 </div>

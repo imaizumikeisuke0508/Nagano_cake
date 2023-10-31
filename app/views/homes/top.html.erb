@@ -15,7 +15,7 @@
 <div class ="row justify-content-between">
 <% @items.each do |item| %>
 <div class="card">
-<a href="public/items/<%= item.id %>">
+<a href="items/<%= item.id %>">
 <%= image_tag item.image, size: "150x100" %></br>
 <%= item.name %><br>
 ¥<%= item.price %><br>

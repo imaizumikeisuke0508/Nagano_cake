@@ -1,6 +1,6 @@
 class Public::OrdersController < ApplicationController
   def new
-    @order = Order.new
+    #@order = Order.new
   end
 
   def confirm
@@ -32,7 +32,7 @@ class Public::OrdersController < ApplicationController
    @order_items.save
    cart_items = CartItem.all
    cart_items.destroy_all
-   redirect_to public_orders_complete_path
+   redirect_to public_orders_thanks_path
   end
 
   def index
