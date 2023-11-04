@@ -12,8 +12,11 @@
 
   <body>
    <header class="container">
-    <div class="d-flex justify-content-end">
      <div class="row">
+      <div class="col">
+      <%= image_tag 'logo', size: "100x100" %>
+     </div>
+     <div class="justify-content-end">
      <% if admin_signed_in? %>
       <% if request.fullpath.include? "/admin" %>
        <button type="button" class="btn btn-link border">
@@ -63,7 +66,7 @@
        </button>
      <% end %>
     </div>
-   </div>
+    </div>
  </header>
 
     <%= yield %>

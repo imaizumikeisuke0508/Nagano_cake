@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
-    @items = Item.all
+    @items = Item.page(params[:page])
   end
   def about
   end
