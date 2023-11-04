@@ -13,7 +13,7 @@
    <th scope="col">数量</th>
    <th scope="col">小計</th>
    </thead>
-<%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
+<%= form_with model: Order, url: public_orders_path, method: :post do |f| %>
 <% @cart_items.each do |cart_item| %>
    <tbody>
     <td><%= cart_item.item.name %></td>
@@ -36,10 +36,12 @@
    <td><%= @total %></td>
    </tr>
    <tr>
-   <td class="table-active">送料</td>
+   <td class="table-active">請求額</td>
    <td><%= @total + @order.postage %></td>
    </tr>
-  <%= f.hidden_field :amount_billed, :value => @total + @order.postage %>
+  <%= f.hidden_field :amount_billed, :value => (@total + @order.postage) %>
+  <%= (@total + @order.postage) %>
+
   </tbody>
  </table>
  </div>

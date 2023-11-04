@@ -19,7 +19,7 @@
 <tbody>
 <td><%= link_to order.created_at, admin_order_path(order.id) %></td>
 <td><%= order.name %></td>
-<td><%= order.order_detail.sum(:quantity) %></td>
+<td><%= order.order_details.sum(:quantity) %></td>
 </tbody>
 <% end %>
 </table>

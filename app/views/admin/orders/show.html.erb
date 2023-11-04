@@ -41,11 +41,13 @@
 <th class="col-3">小計</th>
 </thead>
 <tbody>
-  <% @order_detail.each do |order_detail| %>
+  <% @order_details.each do |order_detail| %>
+  <tr>
   <td><%= order_detail.item.name %></td>
   <td><%= order_detail.add_tax_price %></td>
   <td><%= order_detail.quantity %></td>
   <td><%= order_detail.subtotal %></td>
+  </tr>
   <% end %>
 </tbody>
 </table>

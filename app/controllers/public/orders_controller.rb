@@ -1,6 +1,5 @@
 class Public::OrdersController < ApplicationController
   def new
-    #@order = Order.new
   end
 
   def confirm
@@ -22,14 +21,17 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.save
     @cart_items = CartItem.all
-    @order_items = OrderDetail.new(order_detail_params)
-    @order_items.order_id = @order.id
+     @order_items = []
      @cart_items.each do |cart_item|
-       @order_items.item_id = cart_item.item.id
-       @order_items.price = cart_item.item.price
-       @order_items.quantity = cart_item.amount
+       order_detail = OrderDetail.new(
+        order_id: @order.id,
+        item_id: cart_item.item.id,
+        price: cart_item.item.price,
+        quantity: cart_item.amount
+         )
+      @order_items << order_detail
      end
-   @order_items.save
+   OrderDetail.import @order_items
    cart_items = CartItem.all
    cart_items.destroy_all
    redirect_to public_orders_thanks_path
@@ -41,9 +43,9 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_detail = OrderDetail.where(order_id: @order.id)
+    @order_details = @order.order_details.all
     @total = 0
-    @order_detail.each do |order_detail|
+    @order_details.each do |order_detail|
       @total += order_detail.subtotal
     end
   end
@@ -53,6 +55,6 @@ private
    params.require(:order).permit(:post_number, :address, :payment_method, :name, :amount_billed, :customer_id, )
  end
  def order_detail_params
-   params.require(:order).permit(:price, :item_id, :order_id, :quantity)
+   params.require(:order_detail).permit(:price, :item_id, :order_id, :quantity)
  end
 end

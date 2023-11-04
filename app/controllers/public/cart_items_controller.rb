@@ -25,7 +25,6 @@ class Public::CartItemsController < ApplicationController
       @cart_item.save
     end
     redirect_to public_cart_items_path
-    #render?
   end
 
   def destroy

@@ -7,4 +7,5 @@ end
 def subtotal
   (item.price * 1.10).round * (quantity)
 end
+ActiveRecord::Import::OnDuplicateKeyUpdateSupport
 end
